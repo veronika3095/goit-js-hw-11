@@ -1,14 +1,14 @@
-import{i as h}from"./assets/vendor-I1I71QQ2.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function s(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(e){if(e.ep)return;e.ep=!0;const t=s(e);fetch(e.href,t)}})();const p="46051568-7c86afd7f3b7df8cfe693777e",y="https://pixabay.com/api/",g=o=>fetch(`${y}?key=${p}&q=${o}&image_type=photo&orientation=horizontal&safesearch=true`).then(r=>{if(!r.ok)throw new Error("Error fetching images");return r.json()}).then(r=>r.hits),L=o=>{const r=document.querySelector(".gallery");if(r.innerHTML="",o.length===0){iziToast.error({message:"Sorry, there are no images matching your search query. Please try again!"});return}const s=o.map(({webformatURL:e,largeImageURL:t,tags:n,likes:d,views:u,comments:f,downloads:m})=>`
+import{S as p,i as g}from"./assets/vendor-5ObWk2rO.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function o(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=o(e);fetch(e.href,r)}})();const y="46051568-7c86afd7f3b7df8cfe693777e",L="https://pixabay.com/api/",S=n=>{const t=new URL(L),o=new URLSearchParams({key:y,q:n,image_type:"photo",orientation:"horizontal",safesearch:"true"});return t.search=o.toString(),fetch(t).then(s=>{if(!s.ok)throw new Error("Error fetching images");return s.json()}).then(s=>s.hits)},b=n=>{const t=document.querySelector(".gallery");if(t.innerHTML="",n.length===0){iziToast.error({message:"Sorry, there are no images matching your search query. Please try again!"});return}const o=n.map(({webformatURL:e,largeImageURL:r,tags:i,likes:u,views:f,comments:m,downloads:h})=>`
         <div class="gallery-item">
-            <a href="${t}">
-                <img src="${e}" alt="${n}" />
+            <a href="${r}">
+                <img src="${e}" alt="${i}" />
             </a>
             <div class="image-info">
-                <span>Likes: ${d}</span>
-                <span>Views: ${u}</span>
-                <span>Comments: ${f}</span>
-                <span>Downloads: ${m}</span>
+                <span>Likes: ${u}</span>
+                <span>Views: ${f}</span>
+                <span>Comments: ${m}</span>
+                <span>Downloads: ${h}</span>
             </div>
         </div>
-    `).join("");r.innerHTML=s,new SimpleLightbox(".gallery a",{captionDelay:250,captionsData:"alt"}).refresh()},a=document.querySelector(".search-form"),c=document.querySelector(".loader"),l=document.querySelector(".gallery");a.addEventListener("submit",o=>{o.preventDefault();const r=a.elements.query.value.trim();r&&(c.classList.remove("hidden"),l.classList.add("hidden"),g(r).then(s=>{L(s),l.classList.remove("hidden")}).catch(s=>{console.error(s),h.error({message:"Error fetching images."})}).finally(()=>{c.classList.add("hidden")}))});
+    `).join("");t.innerHTML=o,new SimpleLightbox(".gallery a",{captionDelay:250,captionsData:"alt"}).refresh()},c=document.querySelector(".search-form"),l=document.querySelector(".loader"),d=document.querySelector(".gallery");let a;c.addEventListener("submit",n=>{n.preventDefault();const t=c.elements.query.value.trim();t&&(l.classList.remove("hidden"),d.classList.add("hidden"),S(t).then(o=>{b(o),d.classList.remove("hidden"),a&&a.destroy(),a=new p(".gallery a",{})}).catch(o=>{console.error(o),g.error({message:"Error fetching images."})}).finally(()=>{l.classList.add("hidden")}))});
 //# sourceMappingURL=index.js.map
