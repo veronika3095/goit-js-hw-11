@@ -9,6 +9,8 @@ export const renderGallery = (images) => {
         return;
     }
 
+    
+
     const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
         <div class="gallery-item">
             <a href="${largeImageURL}">
@@ -25,10 +27,10 @@ export const renderGallery = (images) => {
 
     gallery.innerHTML = markup;
 
-    
     const lightbox = new SimpleLightbox('.gallery a', {
         captionDelay: 250,
         captionsData: 'alt', 
     });
+    
     lightbox.refresh();
 };
